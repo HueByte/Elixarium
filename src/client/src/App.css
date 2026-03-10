@@ -11,9 +11,9 @@
 
 /* Book structure */
 .book-container {
-  perspective: 1800px;
-  width: 800px;
-  height: 560px;
+  perspective: 2200px;
+  width: 1000px;
+  height: 700px;
   position: relative;
   z-index: 1;
 }
@@ -48,13 +48,23 @@
   top: 0;
   transform-origin: left center;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   right: 0;
   z-index: 1;
 }
 
 .page.flipped {
   transform: rotateY(-180deg);
+}
+
+/* Shadow that sweeps across during flip */
+.page.active .page-front::after,
+.page.active .page-back::after {
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(120, 90, 40, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(100, 80, 30, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 60%, rgba(90, 70, 30, 0.04) 0%, transparent 60%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.08) 0%, transparent 40%);
 }
 
 .page-front,
@@ -210,46 +220,105 @@
   opacity: 0.75;
 }
 
-.elixir-description {
+/* Content clip for pagination — shows one page-worth of content */
+.elixir-content-clip {
+  height: 620px;
+  overflow: hidden;
+}
+
+/* Markdown body — silver stylus style */
+.elixir-body {
   font-family: 'IM Fell English', serif;
   font-size: 13px;
   line-height: 1.8;
   color: #7a7a8a;
-  text-align: justify;
-  hyphens: auto;
   filter: brightness(0.85);
 }
 
-.elixir-description em {
+.elixir-body p {
+  text-align: justify;
+  hyphens: auto;
+  margin-bottom: 8px;
+}
+
+.elixir-body em {
   font-style: italic;
   color: #8888a0;
 }
 
-.elixir-separator {
+.elixir-body strong {
+  color: #8a8a9a;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.elixir-body hr {
   margin: 14px 0;
   border: none;
   border-top: 1px solid rgba(150, 150, 170, 0.15);
 }
 
-.elixir-properties {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(150, 150, 170, 0.15);
+.elixir-body ol {
+  padding-left: 24px;
+  margin: 8px 0;
 }
 
-.elixir-property {
-  font-family: 'IM Fell English', serif;
+.elixir-body ol li {
+  font-size: 12px;
+  color: #7a7a8a;
+  margin-bottom: 4px;
+  filter: brightness(0.85);
+}
+
+.elixir-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.elixir-body ul li {
   font-size: 11.5px;
   color: #7a7a8a;
   margin-bottom: 4px;
   filter: brightness(0.8);
 }
 
-.elixir-property .label {
+.elixir-body ul li strong {
   color: #8a8a9a;
   font-style: italic;
   min-width: 80px;
   display: inline-block;
+}
+
+.elixir-body h2 {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 16px;
+  color: transparent;
+  background: linear-gradient(170deg, #8a8a9a 0%, #b0b0c0 50%, #8a8a9a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 1px;
+  margin: 16px 0 8px;
+  font-weight: normal;
+  filter: brightness(0.85) contrast(1.2);
+}
+
+.elixir-body h3 {
+  font-family: 'IM Fell English', serif;
+  font-size: 14px;
+  color: #8a8a98;
+  font-style: italic;
+  font-weight: normal;
+  margin: 12px 0 6px;
+  filter: brightness(0.8);
+}
+
+.elixir-body blockquote {
+  border-left: 2px solid rgba(150, 150, 170, 0.2);
+  padding-left: 12px;
+  margin: 10px 0;
+  font-style: italic;
+  color: #8888a0;
 }
 
 /* Page number */
@@ -319,16 +388,73 @@
   z-index: 1;
 }
 
-.page-indicator {
+/* Bottom page controls */
+.page-controls {
   position: fixed;
-  bottom: 30px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 200;
+}
+
+.page-jump-btn {
+  background: none;
+  border: 1px solid rgba(192, 182, 155, 0.15);
+  color: rgba(192, 182, 155, 0.5);
+  font-family: 'IM Fell English', serif;
+  font-size: 14px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+  line-height: 1;
+}
+
+.page-jump-btn:hover:not(:disabled) {
+  background: rgba(50, 42, 30, 0.6);
+  border-color: rgba(192, 182, 155, 0.3);
+  color: rgba(192, 182, 155, 0.8);
+}
+
+.page-jump-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.page-select {
+  background: rgba(20, 16, 12, 0.7);
+  border: 1px solid rgba(192, 182, 155, 0.2);
+  color: rgba(192, 182, 155, 0.6);
   font-family: 'IM Fell English', serif;
   font-size: 13px;
-  color: rgba(192, 182, 155, 0.4);
-  letter-spacing: 2px;
-  z-index: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+  -webkit-appearance: none;
+  appearance: none;
+  backdrop-filter: blur(4px);
+}
+
+.page-select:hover {
+  border-color: rgba(192, 182, 155, 0.4);
+  color: rgba(192, 182, 155, 0.8);
+}
+
+.page-select option {
+  background: #1a1510;
+  color: #c0b69b;
+}
+
+.page-of {
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  color: rgba(192, 182, 155, 0.35);
+  letter-spacing: 1px;
 }
 
 /* Page stacking z-index */
@@ -394,4 +520,73 @@
   color: #7a7a8a;
   max-width: 80%;
   line-height: 1.7;
+}
+
+/* Table of Contents */
+.toc-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toc-title {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 22px;
+  color: transparent;
+  background: linear-gradient(170deg, #8a8a9a 0%, #c0c0d0 40%, #9090a0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  filter: brightness(0.85) contrast(1.2);
+}
+
+.toc-ornament {
+  color: #8a8a9a;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 28px;
+  opacity: 0.5;
+}
+
+.toc-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  gap: 8px;
+}
+
+.toc-entry:hover {
+  opacity: 0.7;
+}
+
+.toc-entry-name {
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  color: #8a8a9a;
+  white-space: nowrap;
+  filter: brightness(0.85);
+}
+
+.toc-entry-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(138, 138, 154, 0.25);
+  min-width: 20px;
+  margin-bottom: 3px;
+}
+
+.toc-entry-page {
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  color: #8a8a9a;
+  filter: brightness(0.75);
+  white-space: nowrap;
 }

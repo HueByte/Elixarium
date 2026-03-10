@@ -32,12 +32,12 @@ export default function StarField() {
       positions[i * 3 + 1] = (Math.random() - 0.5) * 3;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 2 - 1;
 
-      sizes[i] = 0.5 + Math.random() * 1.5;
+      sizes[i] = 0.3 + Math.random() * 0.7;
       baseOpacities[i] = 0.1 + Math.random() * 0.6;
       opacities[i] = baseOpacities[i];
 
       const angle = Math.random() * Math.PI * 2;
-      const spd = 0.0002 + Math.random() * 0.001;
+      const spd = 0.00005 + Math.random() * 0.0002;
       speeds[i * 3] = Math.cos(angle) * spd;
       speeds[i * 3 + 1] = Math.sin(angle) * spd;
       speeds[i * 3 + 2] = 0;
@@ -59,7 +59,7 @@ export default function StarField() {
         void main() {
           vOpacity = aOpacity;
           vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-          gl_PointSize = aSize * (300.0 / -mvPosition.z);
+          gl_PointSize = aSize * (20.0 / -mvPosition.z);
           gl_Position = projectionMatrix * mvPosition;
         }
       `,
@@ -68,7 +68,7 @@ export default function StarField() {
         void main() {
           float dist = length(gl_PointCoord - vec2(0.5));
           if (dist > 0.5) discard;
-          float alpha = smoothstep(0.5, 0.1, dist) * vOpacity;
+          float alpha = smoothstep(0.5, 0.0, dist) * vOpacity;
           gl_FragColor = vec4(1.0, 1.0, 1.0, alpha);
         }
       `,
