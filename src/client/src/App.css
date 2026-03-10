@@ -11,9 +11,9 @@
 
 /* Book structure */
 .book-container {
-  perspective: 2200px;
-  width: 1000px;
-  height: 700px;
+  perspective: 2600px;
+  width: 1200px;
+  height: 840px;
   position: relative;
   z-index: 1;
 }
@@ -169,12 +169,12 @@
   pointer-events: none;
 }
 
-/* Silver stylus text */
+/* Oxidized copper stylus text */
 .elixir-title {
   font-family: 'MedievalSharp', cursive;
-  font-size: 22px;
+  font-size: 26px;
   color: transparent;
-  background: linear-gradient(170deg, #8a8a9a 0%, #a8a8b8 20%, #c0c0d0 40%, #9090a0 60%, #b0b0c0 80%, #808898 100%);
+  background: linear-gradient(170deg, #7A5B2E 0%, #A67B3C 20%, #C4944A 40%, #8B6914 60%, #B8924A 80%, #6B4E20 100%);
   -webkit-background-clip: text;
   background-clip: text;
   text-align: center;
@@ -182,7 +182,7 @@
   letter-spacing: 2px;
   text-shadow: none;
   position: relative;
-  filter: brightness(0.85) contrast(1.2);
+  filter: brightness(0.9) contrast(1.1);
 }
 
 .elixir-title::after {
@@ -191,18 +191,18 @@
   width: 60%;
   height: 1px;
   margin: 8px auto 0;
-  background: linear-gradient(90deg, transparent, #9a9aaa, transparent);
+  background: linear-gradient(90deg, transparent, #9A8A5A, transparent);
 }
 
 .elixir-subtitle {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
-  color: #8a8a98;
+  color: #7A6A50;
   margin-bottom: 20px;
   letter-spacing: 1px;
-  filter: brightness(0.8);
+  filter: brightness(0.85);
 }
 
 .elixir-illustration {
@@ -216,23 +216,23 @@
 }
 
 .elixir-illustration svg {
-  filter: drop-shadow(0 0 1px rgba(150, 150, 170, 0.3));
-  opacity: 0.75;
+  filter: sepia(0.5) saturate(0.7) brightness(0.8) drop-shadow(0 0 1px rgba(140, 110, 60, 0.3));
+  opacity: 0.7;
 }
 
 /* Content clip for pagination — shows one page-worth of content */
 .elixir-content-clip {
-  height: 620px;
+  height: 760px;
   overflow: hidden;
 }
 
-/* Markdown body — silver stylus style */
+/* Markdown body — oxidized copper style */
 .elixir-body {
   font-family: 'IM Fell English', serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
-  color: #7a7a8a;
-  filter: brightness(0.85);
+  color: #5E4E3A;
+  filter: brightness(0.95);
 }
 
 .elixir-body p {
@@ -243,11 +243,11 @@
 
 .elixir-body em {
   font-style: italic;
-  color: #8888a0;
+  color: #6B5538;
 }
 
 .elixir-body strong {
-  color: #8a8a9a;
+  color: #6B5538;
   font-weight: normal;
   font-style: italic;
 }
@@ -255,7 +255,7 @@
 .elixir-body hr {
   margin: 14px 0;
   border: none;
-  border-top: 1px solid rgba(150, 150, 170, 0.15);
+  border-top: 1px solid rgba(140, 110, 60, 0.2);
 }
 
 .elixir-body ol {
@@ -264,10 +264,10 @@
 }
 
 .elixir-body ol li {
-  font-size: 12px;
-  color: #7a7a8a;
+  font-size: 13px;
+  color: #5E4E3A;
   margin-bottom: 4px;
-  filter: brightness(0.85);
+  filter: brightness(0.95);
 }
 
 .elixir-body ul {
@@ -277,14 +277,14 @@
 }
 
 .elixir-body ul li {
-  font-size: 11.5px;
-  color: #7a7a8a;
+  font-size: 12.5px;
+  color: #5E4E3A;
   margin-bottom: 4px;
-  filter: brightness(0.8);
+  filter: brightness(0.9);
 }
 
 .elixir-body ul li strong {
-  color: #8a8a9a;
+  color: #6B5538;
   font-style: italic;
   min-width: 80px;
   display: inline-block;
@@ -292,33 +292,33 @@
 
 .elixir-body h2 {
   font-family: 'MedievalSharp', cursive;
-  font-size: 16px;
+  font-size: 18px;
   color: transparent;
-  background: linear-gradient(170deg, #8a8a9a 0%, #b0b0c0 50%, #8a8a9a 100%);
+  background: linear-gradient(170deg, #7A5B2E 0%, #B8924A 50%, #7A5B2E 100%);
   -webkit-background-clip: text;
   background-clip: text;
   letter-spacing: 1px;
   margin: 16px 0 8px;
   font-weight: normal;
-  filter: brightness(0.85) contrast(1.2);
+  filter: brightness(0.9) contrast(1.1);
 }
 
 .elixir-body h3 {
   font-family: 'IM Fell English', serif;
-  font-size: 14px;
-  color: #8a8a98;
+  font-size: 15px;
+  color: #7A6A50;
   font-style: italic;
   font-weight: normal;
   margin: 12px 0 6px;
-  filter: brightness(0.8);
+  filter: brightness(0.85);
 }
 
 .elixir-body blockquote {
-  border-left: 2px solid rgba(150, 150, 170, 0.2);
+  border-left: 2px solid rgba(140, 110, 60, 0.25);
   padding-left: 12px;
   margin: 10px 0;
   font-style: italic;
-  color: #8888a0;
+  color: #6B5538;
 }
 
 /* Page number */
@@ -326,9 +326,9 @@
   position: absolute;
   bottom: 18px;
   font-family: 'IM Fell English', serif;
-  font-size: 12px;
-  color: #9a9aaa;
-  filter: brightness(0.7);
+  font-size: 13px;
+  color: #8A7A5A;
+  filter: brightness(0.75);
 }
 
 .page-front .page-number { right: 30px; }
@@ -377,13 +377,13 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: 'MedievalSharp', cursive;
-  font-size: 28px;
+  font-size: 32px;
   letter-spacing: 6px;
   color: transparent;
-  background: linear-gradient(170deg, #8a8a9a 0%, #c0c0d0 50%, #8a8a9a 100%);
+  background: linear-gradient(170deg, #7A5B2E 0%, #C4944A 50%, #7A5B2E 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  filter: brightness(0.7);
+  filter: brightness(0.75);
   text-transform: uppercase;
   z-index: 1;
 }
@@ -466,8 +466,8 @@
 .mirror-note {
   position: absolute;
   font-family: 'IM Fell English', serif;
-  font-size: 9px;
-  color: rgba(150, 150, 170, 0.2);
+  font-size: 10px;
+  color: rgba(140, 110, 60, 0.2);
   transform: scaleX(-1);
   pointer-events: none;
 }
@@ -496,18 +496,18 @@
 
 .cover-content .cover-title {
   font-family: 'MedievalSharp', cursive;
-  font-size: 28px;
+  font-size: 32px;
   color: transparent;
-  background: linear-gradient(170deg, #8a8a9a 0%, #c0c0d0 40%, #9090a0 100%);
+  background: linear-gradient(170deg, #7A5B2E 0%, #C4944A 40%, #8B6914 100%);
   -webkit-background-clip: text;
   background-clip: text;
   letter-spacing: 3px;
   margin-bottom: 12px;
-  filter: brightness(0.85) contrast(1.2);
+  filter: brightness(0.9) contrast(1.1);
 }
 
 .cover-content .cover-ornament {
-  color: #8a8a9a;
+  color: #8A7A4A;
   font-size: 18px;
   margin-bottom: 16px;
   opacity: 0.5;
@@ -516,8 +516,8 @@
 .cover-content .cover-desc {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 12px;
-  color: #7a7a8a;
+  font-size: 13px;
+  color: #5E4E3A;
   max-width: 80%;
   line-height: 1.7;
 }
@@ -531,19 +531,19 @@
 
 .toc-title {
   font-family: 'MedievalSharp', cursive;
-  font-size: 22px;
+  font-size: 26px;
   color: transparent;
-  background: linear-gradient(170deg, #8a8a9a 0%, #c0c0d0 40%, #9090a0 100%);
+  background: linear-gradient(170deg, #7A5B2E 0%, #C4944A 40%, #8B6914 100%);
   -webkit-background-clip: text;
   background-clip: text;
   text-align: center;
   letter-spacing: 3px;
   margin-bottom: 8px;
-  filter: brightness(0.85) contrast(1.2);
+  filter: brightness(0.9) contrast(1.1);
 }
 
 .toc-ornament {
-  color: #8a8a9a;
+  color: #8A7A4A;
   font-size: 14px;
   text-align: center;
   margin-bottom: 28px;
@@ -570,23 +570,23 @@
 
 .toc-entry-name {
   font-family: 'IM Fell English', serif;
-  font-size: 13px;
-  color: #8a8a9a;
+  font-size: 14px;
+  color: #6B5538;
   white-space: nowrap;
-  filter: brightness(0.85);
+  filter: brightness(0.9);
 }
 
 .toc-entry-dots {
   flex: 1;
-  border-bottom: 1px dotted rgba(138, 138, 154, 0.25);
+  border-bottom: 1px dotted rgba(140, 110, 60, 0.25);
   min-width: 20px;
   margin-bottom: 3px;
 }
 
 .toc-entry-page {
   font-family: 'IM Fell English', serif;
-  font-size: 13px;
-  color: #8a8a9a;
-  filter: brightness(0.75);
+  font-size: 14px;
+  color: #6B5538;
+  filter: brightness(0.8);
   white-space: nowrap;
 }

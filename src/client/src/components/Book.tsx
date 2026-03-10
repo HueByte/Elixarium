@@ -3,9 +3,9 @@ import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
 import { loadAllPotions, type PotionData } from '../utils/markdownParser';
 import ElixirPage, { CoverPage, PotionContent, TocPage, type TocEntry } from './ElixirPage';
 
-// Usable content height per page: 700 - 40 top pad - 40 bottom pad
+// Usable content height per page: 840 - 40 top pad - 40 bottom pad
 // Page number is position:absolute in the padding area, so it doesn't consume content space
-const CONTENT_HEIGHT = 620;
+const CONTENT_HEIGHT = 760;
 
 interface PageSlice {
   potionIndex: number;
@@ -285,7 +285,7 @@ export default function Book() {
           position: 'absolute',
           left: -9999,
           top: 0,
-          width: 435,
+          width: 535,
           visibility: 'hidden',
           pointerEvents: 'none',
         }}
